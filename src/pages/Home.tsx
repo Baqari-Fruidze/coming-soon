@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function Home() {
   return (
     <div>
-      <H>ola</H>
+      <H>მეწარმე</H>
     </div>
   );
 }
@@ -12,4 +12,6 @@ export default function Home() {
 const H = styled.h1`
   font-size: 65px;
   color: red;
+  font-family: chivo;
+  font-weight: 400;
 `;
