@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import arrowDown from "/images/arrow-down-s-line.svg";
 import { useState } from "react";
+import test from "/images/scroll-to-bottom-fill.svg";
 
 export default function Home() {
   const [first, setFirst] = useState<boolean>(false);
@@ -53,22 +54,130 @@ export default function Home() {
             <Question>ვინ არის ინვესტორი?</Question>
             <ArrowDown src={arrowDown} alt="" status={third} />
           </QuestionCon>
-          <Answer>
-            DEALIN-ზე ინვესტორი არის ადამიანი ან ორგანიზაცია, რომელიც ხედავს
-            პოტენციალს იქ, სადაც სხვები მხოლოდ რესურსების დაკარგვის რისკს
-            ხედავენ. ეს არის პირი, რომელიც მზადაა გააზრებულად განახორციელოს
-            სხვადასხვა ტიპის ფინანსური ინვესტიცია პერსპექტიულ იდეებში,
-            რომლებისთვისაც ბაზარზე წარმატების მოპოვება ნამდვილად შესაძლებელია,
-            ან მოქმედ ბიზნესში რომელიც DEALIN-ის სანდო ანალიტიკის მიხედვით უკვე
-            წარმატებულია.
-          </Answer>
+          {third ? (
+            <Answer>
+              DEALIN-ზე ინვესტორი არის ადამიანი ან ორგანიზაცია, რომელიც ხედავს
+              პოტენციალს იქ, სადაც სხვები მხოლოდ რესურსების დაკარგვის რისკს
+              ხედავენ. ეს არის პირი, რომელიც მზადაა გააზრებულად განახორციელოს
+              სხვადასხვა ტიპის ფინანსური ინვესტიცია პერსპექტიულ იდეებში,
+              რომლებისთვისაც ბაზარზე წარმატების მოპოვება ნამდვილად შესაძლებელია,
+              ან მოქმედ ბიზნესში რომელიც DEALIN-ის სანდო ანალიტიკის მიხედვით
+              უკვე წარმატებულია.
+            </Answer>
+          ) : null}
         </ThirdCon>
-        <div></div>
+        <FourthCon>
+          <QuestionCon status={four} onClick={() => setFourth((prev) => !prev)}>
+            <Question>მეწარმე VS ინვესტორი?</Question>
+            <ArrowDown src={arrowDown} alt="" status={four} />
+          </QuestionCon>
+          {four ? (
+            <UUl>
+              <Spann>
+                DEALIN-ზე მეწარმე იქნები თუ ინვესტორი, დამოკიდებულია შენს
+                კონკრეტულ საჭირობებსა და მოთხოვნებზე.
+              </Spann>
+              <ul>
+                <Para> მეწარმის სტაუტსი უნდა აირჩიო:</Para>
+                <Lii>
+                  თუ გაქვს ინოვაციური ბიზნეს იდეა და გჭირდება თანხის მოზიდვა.
+                </Lii>
+                <Lii>
+                  თუ გაქვს მოქმედი ბიზნესი, უკვე არსებული გაყიდვების ისტორიით და
+                  გჭირდება დამატებითი ფულადი სახსრები.
+                </Lii>
+                <ul>
+                  <Para>ინვესტორის სტაუტსი უნდა აირჩიო:</Para>
+                  <Lii>
+                    თუ დაინტერესებული ხარ ინოვაციურ ბიზნეს იდეებში ინვესტირებით.
+                  </Lii>
+                  <Lii>
+                    თუ დაინტერესებული ხარ თანხის გასესხებით ან მოქმედი ბიზნესის
+                    სრულად/ნაწილობრივ შეძენით.
+                  </Lii>
+                </ul>
+              </ul>
+            </UUl>
+          ) : null}
+        </FourthCon>
       </ContenCon>
+      <BottonCon>
+        <Mini>წინ</Mini>
+        <Img src={test} alt="" />
+      </BottonCon>
     </Parent>
   );
 }
 
+const BottonCon = styled.div`
+  display: flex;
+  gap: 18px;
+  align-items: center;
+`;
+const Mini = styled.span`
+  color: #e2caa9;
+  font-family: Nino;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  @media (min-width: 1440px) {
+    font-size: 24px;
+  }
+`;
+const Img = styled.img`
+  width: 4rem;
+  height: 4rem;
+  transform: rotate(-90deg);
+`;
+const Lii = styled.li`
+  margin-left: 2.5rem;
+  color: #c7d9ff;
+  font-family: Glaho;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 147%; /* 26.46px */
+  @media (min-width: 1440px) {
+    font-size: 22px;
+  }
+`;
+const Para = styled.p`
+  color: #c7d9ff;
+  font-family: Glaho;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 147%; /* 26.46px */
+  @media (min-width: 1440px) {
+    font-size: 22px;
+  }
+`;
+const UUl = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  padding-bottom: 3rem;
+`;
+const Spann = styled.span`
+  color: #c7d9ff;
+  font-family: Glaho;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 147%;
+  @media (min-width: 1440px) {
+    font-size: 22px;
+  }
+`;
+const FourthCon = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  border-bottom: 2px solid #fff;
+`;
 const ThirdCon = styled.div`
   display: flex;
   flex-direction: column;
@@ -90,6 +199,9 @@ const Answer = styled.p`
   line-height: 28px; /* 155.556% */
   letter-spacing: 0.72px;
   padding-bottom: 3rem;
+  @media (min-width: 1440px) {
+    font-size: 22px;
+  }
 `;
 const ArrowDown = styled.img<{ status: boolean }>`
   width: 38px;
@@ -105,6 +217,9 @@ const Question = styled.p`
   font-style: normal;
   font-weight: 700;
   line-height: 147%;
+  @media (min-width: 1440px) {
+    font-size: 36px;
+  }
 `;
 const QuestionCon = styled.div<{ status: boolean }>`
   width: 100%;
@@ -124,6 +239,14 @@ const ContenCon = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5rem;
+  @media (min-width: 768px) {
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
+  }
+  @media (min-width: 1440px) {
+    padding-left: 15rem;
+    padding-right: 15rem;
+  }
 `;
 const Parent = styled.div`
   display: flex;
@@ -132,4 +255,5 @@ const Parent = styled.div`
   gap: 18rem;
   padding-left: 9px;
   padding-right: 9px;
+  padding-bottom: 13rem;
 `;

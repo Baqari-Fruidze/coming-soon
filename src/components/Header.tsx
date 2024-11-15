@@ -31,4 +31,8 @@ const Parent = styled.div`
   justify-content: center;
   padding-top: 14.3rem;
   padding-bottom: 22.8rem;
+  @media (min-width: 768px) {
+    padding-top: 16.3rem;
+    padding-bottom: 22.8rem;
+  }
 `;
