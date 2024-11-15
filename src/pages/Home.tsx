@@ -2,12 +2,14 @@ import styled from "styled-components";
 import arrowDown from "/images/arrow-down-s-line.svg";
 import { useState } from "react";
 import test from "/images/scroll-to-bottom-fill.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [first, setFirst] = useState<boolean>(false);
   const [second, setSecond] = useState<boolean>(false);
   const [third, setThird] = useState<boolean>(false);
   const [four, setFourth] = useState<boolean>(false);
+  const navigate = useNavigate();
   return (
     <Parent>
       <ContenCon>
@@ -101,7 +103,7 @@ export default function Home() {
           ) : null}
         </FourthCon>
       </ContenCon>
-      <BottonCon>
+      <BottonCon onClick={() => navigate("selectRole")}>
         <Mini>წინ</Mini>
         <Img src={test} alt="" />
       </BottonCon>
