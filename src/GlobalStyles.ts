@@ -28,5 +28,6 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: 'Chivo', 'Nino', 'Glaho', sans-serif; /* Corrected fallback */
+    background-color:  #152C5E;;
   }
 `;
