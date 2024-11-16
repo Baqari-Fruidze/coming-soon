@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import arrowDown from "/images/arrow-down-s-line.svg";
 import { useState } from "react";
-import test from "/images/scroll-to-bottom-fill.svg";
+import next from "/images/scroll-to-bottom-fill.svg";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
@@ -105,7 +105,7 @@ export default function Home() {
       </ContenCon>
       <BottonCon onClick={() => navigate("selectRole")}>
         <Mini>წინ</Mini>
-        <Img src={test} alt="" />
+        <Img src={next} alt="" />
       </BottonCon>
     </Parent>
   );

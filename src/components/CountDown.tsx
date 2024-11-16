@@ -1,3 +1,4 @@
+import { useMediaQuery } from "@uidotdev/usehooks";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 
@@ -17,6 +18,7 @@ const CountdownTimer = () => {
     minutes: "00",
     seconds: "00",
   });
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 767px)");
 
   const calculateTimeLeft = () => {
     const now = new Date();
@@ -77,7 +79,7 @@ const CountdownTimer = () => {
           <TextSpan>საათი</TextSpan>
         </SingleCon>
       </DayHour>
-
+      {isSmallDevice ? null : <CustomSep>:</CustomSep>}
       <DayHour>
         <SingleCon>
           <SingleTypeCon>
@@ -109,7 +111,18 @@ const CountdownTimer = () => {
 
 export default CountdownTimer;
 
-// Styled Components
+const CustomSep = styled.span`
+  color: #c7d9ff;
+  font-family: Chivo;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 1.5rem;
+  @media (min-width: 1440px) {
+    margin-top: 2.5rem;
+  }
+`;
 const GreenText = styled.span`
   color: #a6d971;
   font-family: Chivo;
@@ -117,16 +130,29 @@ const GreenText = styled.span`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  @media (min-width: 768px) {
+    font-size: 75px;
+  }
+  @media (min-width: 1440px) {
+    font-size: 96px;
+  }
 `;
 
 const TextSpan = styled.span`
   color: #c7d9ff;
-  font-family: Chivo;
+  font-family: Nino;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   margin-bottom: -3rem;
+  @media (min-width: 768px) {
+    font-size: 24px;
+    margin-bottom: -6rem;
+  }
+  @media (min-width: 1440px) {
+    font-size: 36px;
+  }
 `;
 
 const SingleTypeCon = styled.div`
@@ -139,6 +165,14 @@ const SingleCharCon = styled.div`
   border: 2px solid #6287d6;
   width: 58px;
   height: 91px;
+  @media (min-width: 768px) {
+    width: 7rem;
+    height: 11rem;
+  }
+  @media (min-width: 1440px) {
+    width: 8rem;
+    height: 12.7rem;
+  }
 `;
 const Separator = styled.span`
   color: #c7d9ff;
@@ -161,7 +195,12 @@ const DayHour = styled.div`
   gap: 1.8rem;
 `;
 const Parent = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 4.4rem;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 1.4rem;
+  }
 `;
