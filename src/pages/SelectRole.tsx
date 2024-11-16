@@ -7,13 +7,15 @@ import previous from "/images/scroll-to-bottom-fill.svg";
 import { useNavigate } from "react-router-dom";
 
 export default function SelectRole() {
-  const [choice, setChoice] = useState({});
+  const [choice, setChoice] = useState({
+    choice: "",
+  });
   const [chosen, setChosen] = useState<boolean>(false);
   const [info, setInfo] = useState({});
   const [show, setShow] = useState<boolean>(false);
   const navigate = useNavigate();
   useEffect(() => {
-    if (choice) {
+    if (choice.choice) {
       const foo = async () => {
         try {
           const res = await fetch(
@@ -61,7 +63,6 @@ export default function SelectRole() {
       </RoleSelect>
       {show ? <Success /> : null}
       {chosen ? <Repeat /> : null}
-      const navigate = useNavigate();
       <BottommCon onClick={() => navigate("/")}>
         <Img src={previous} alt="" />
         <Mini>უკან</Mini>
@@ -157,6 +158,7 @@ const Parent = styled.div`
   flex-direction: column;
   gap: 14rem;
   align-items: center;
+  padding-bottom: 5rem;
   @media (min-width: 768px) {
     padding-left: 3rem;
     padding-right: 3rem;
