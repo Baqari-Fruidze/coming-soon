@@ -1,11 +1,18 @@
 import React from "react";
 import CountDown from "../components/CountDown";
+import styled from "styled-components";
 
 export default function SelectRole() {
   return (
-    <div>
-      <h1>select</h1>
+    <Parent>
+      <span>select</span>
       <CountDown />
-    </div>
+    </Parent>
   );
 }
+const Parent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 14rem;
+  align-items: center;
+`;
