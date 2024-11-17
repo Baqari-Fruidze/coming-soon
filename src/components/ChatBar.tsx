@@ -6,26 +6,34 @@ import {
   LinearScale,
   Tooltip,
   Legend,
+  Title,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
+import ChartDataLabels from "chartjs-plugin-datalabels";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Tooltip,
+  Legend,
+  Title,
+  ChartDataLabels
+);
 
 const ChartContainer = styled.div`
   width: 100%;
   margin: 0 auto;
 
-  /* Mobile (max width 768px) */
   @media (max-width: 768px) {
     max-width: 360px;
   }
 
-  /* Tablet (769px to 1024px) */
   @media (min-width: 769px) and (max-width: 1024px) {
     max-width: 750px;
   }
 
-  /* Desktop (min width 1025px) */
   @media (min-width: 1025px) {
     max-width: 906px;
   }
@@ -33,14 +41,14 @@ const ChartContainer = styled.div`
 
 const ChatBar = () => {
   const data = {
-    labels: ["ინვესტორი", "მეწარმე"],
+    labels: ["", ""],
     datasets: [
       {
         label: "Messages Sent",
-        data: [12, 19],
+        data: [1, 19],
         backgroundColor: ["#C7D9FF", "#E2CAA9"],
-        barThickness: 70, // Adjust column width
-        borderRadius: 10, // Adds rounded corners
+        barThickness: 70,
+        borderRadius: 10, // Apply border radius to the bars
       },
     ],
   };
@@ -54,28 +62,34 @@ const ChatBar = () => {
       tooltip: {
         enabled: true,
       },
+      datalabels: {
+        display: false, // Set display to false to remove labels from the columns
+      },
     },
     scales: {
       x: {
         grid: {
-          display: false, // Removes vertical gridlines
+          display: false,
         },
         ticks: {
-          color: "#FFFFFF", // Optional: Change x-axis labels to white
+          color: "#FFFFFF",
+          callback: function (value, index) {
+            return data.datasets[0].data[index];
+          },
         },
       },
       y: {
         grid: {
-          color: "#2F56A8", // Horizontal lines in the background
-          lineWidth: 2, // Make horizontal lines thicker
+          color: "#2F56A8",
+          lineWidth: 2,
         },
         ticks: {
-          color: "#FFFFFF", // White numbers on the left side
+          color: "#FFFFFF",
           beginAtZero: true,
         },
-        // Remove left border (vertical line near numbers)
+
         border: {
-          display: false, // Removes the left vertical line
+          display: false,
         },
       },
     },
@@ -83,9 +97,59 @@ const ChatBar = () => {
 
   return (
     <ChartContainer>
+      <Parent>
+        <SigleCon>
+          <CircleE></CircleE>
+          <Texte>მეწარმე</Texte>
+        </SigleCon>
+        <SigleCon>
+          <Circlei></Circlei>
+          <Texti>ინვესტორი</Texti>
+        </SigleCon>
+      </Parent>
+
       <Bar data={data} options={options} />
     </ChartContainer>
   );
 };
-
+const CircleE = styled.div`
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #c7d9ff;
+`;
+const Circlei = styled.div`
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #e2caa9;
+`;
+const Parent = styled.div`
+  display: flex;
+  gap: 5rem;
+  align-items: center;
+  margin-left: 20%;
+  margin-bottom: 2rem;
+`;
+const SigleCon = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 25px;
+`;
+const Texte = styled.span`
+  color: #c7d9ff;
+  font-family: Chivo;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
+const Texti = styled.span`
+  color: #e2caa9;
+  font-family: Chivo;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
 export default ChatBar;
