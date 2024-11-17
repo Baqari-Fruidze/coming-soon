@@ -7,6 +7,7 @@ import previous from "/images/scroll-to-bottom-fill.svg";
 import { useNavigate } from "react-router-dom";
 import investori from "../Investori.json";
 import mewarme from "../mewarme.json";
+import ChatBar from "../components/ChatBar";
 
 export default function SelectRole() {
   const [invAdvice, setInvAdvice] = useState({
@@ -99,6 +100,7 @@ export default function SelectRole() {
           </Text>
         </AdviceCon>
       ) : null}
+      <ChatBar />
       <BottommCon onClick={() => navigate("/")}>
         <Img src={previous} alt="" />
         <Mini>უკან</Mini>
