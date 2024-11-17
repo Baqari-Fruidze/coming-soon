@@ -5,8 +5,25 @@ import Success from "../components/Success";
 import Repeat from "../components/Repeat";
 import previous from "/images/scroll-to-bottom-fill.svg";
 import { useNavigate } from "react-router-dom";
+import investori from "../Investori.json";
+import mewarme from "../mewarme.json";
 
 export default function SelectRole() {
+  const [invAdvice, setInvAdvice] = useState({
+    title: "",
+    content: "",
+  });
+  const [mewAdvice, setMewAdvice] = useState({ title: "", content: "" });
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * investori.sections.length);
+    setInvAdvice(investori.sections[randomIndex]);
+  }, []);
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * mewarme.sections.length);
+    setMewAdvice(mewarme.sections[randomIndex]);
+  }, []);
+
   const [choice, setChoice] = useState({
     choice: "",
   });
@@ -14,6 +31,7 @@ export default function SelectRole() {
   const [info, setInfo] = useState({});
   const [show, setShow] = useState<boolean>(false);
   const navigate = useNavigate();
+  console.log(mewarme.common);
   useEffect(() => {
     if (choice.choice) {
       const foo = async () => {
@@ -44,9 +62,7 @@ export default function SelectRole() {
       foo();
     }
   }, [choice]);
-  console.log(choice);
-  console.log(info);
-  console.log(chosen);
+
   return (
     <Parent>
       <CountDown />
@@ -63,6 +79,26 @@ export default function SelectRole() {
       </RoleSelect>
       {show ? <Success /> : null}
       {chosen ? <Repeat /> : null}
+      {show ? (
+        <AdviceCon>
+          <Header>
+            {choice.choice === "entrepreneur"
+              ? mewAdvice.title
+              : invAdvice.title}
+          </Header>
+          <Text>
+            {choice.choice === "entrepreneur"
+              ? mewAdvice.content
+              : invAdvice.content}
+          </Text>
+          <VerticalLinee />
+          <Text>
+            {choice.choice === "entrepreneur"
+              ? mewarme.common
+              : investori.common}
+          </Text>
+        </AdviceCon>
+      ) : null}
       <BottommCon onClick={() => navigate("/")}>
         <Img src={previous} alt="" />
         <Mini>უკან</Mini>
@@ -71,6 +107,52 @@ export default function SelectRole() {
   );
 }
 
+const VerticalLinee = styled.hr`
+  background-color: #c7d9ff;
+  width: 70%;
+  height: 2px;
+  align-self: center;
+  @media (min-width: 768px) {
+  }
+  @media (min-width: 1440px) {
+  }
+`;
+const Text = styled.p`
+  color: #c7d9ff;
+  text-align: center;
+  font-family: Glaho;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  @media (min-width: 768px) {
+    font-size: 19px;
+  }
+  @media (min-width: 1440px) {
+    font-size: 20px;
+  }
+`;
+const Header = styled.p`
+  color: #c7d9ff;
+  text-align: center;
+  font-family: Chivo;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 34px;
+  @media (min-width: 768px) {
+    font-size: 22px;
+  }
+  @media (min-width: 1440px) {
+    font-size: 24px;
+  }
+`;
+const AdviceCon = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.5rem;
+`;
 const BottommCon = styled.div`
   display: flex;
   gap: 23px;
