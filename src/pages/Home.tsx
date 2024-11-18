@@ -103,7 +103,7 @@ export default function Home() {
           ) : null}
         </FourthCon>
       </ContenCon>
-      <BottonCon onClick={() => navigate("selectRole")}>
+      <BottonCon onClick={() => navigate("SelectRole")}>
         <Mini>წინ</Mini>
         <Img src={next} alt="" />
       </BottonCon>
