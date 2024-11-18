@@ -45,40 +45,34 @@ export default function SelectRole() {
 
   useEffect(() => {
     const foo = async () => {
-      console.log(choice);
-      try {
-        const res = await fetch(
-          "https://chic-communication-coming-soon.up.railway.app/api/choice/",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(choice),
-          }
-        );
-        console.log(res);
-        if (res.status === 302) {
-          setChosen(true);
-          const data = await res.json();
-          setInfo(data);
-          setHide(true);
-          setChat(true);
+      const res = await fetch(
+        "https://chic-communication-coming-soon.up.railway.app/api/choice/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(choice),
         }
+      );
 
-        if (res.status === 201) {
-          const data = await res.json();
-          setInfo(data);
-          setShow(true);
-        }
-      } catch (err) {
-        console.error("Error:", err);
+      if (res.status === 302) {
+        setChosen(true);
+        const data = await res.json();
+        setInfo(data);
+        setHide(true);
+        setChat(true);
+      }
+
+      if (res.status === 201) {
+        const data = await res.json();
+        setInfo(data);
+        setShow(true);
       }
     };
 
     foo();
   }, [choice]);
-  console.log(choice);
   return (
     <Parent>
       <CountDown />
