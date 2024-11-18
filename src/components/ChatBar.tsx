@@ -9,8 +9,8 @@ import {
   Title,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import { Idata } from "../pages/SelectRole";
 
 ChartJS.register(
   CategoryScale,
@@ -39,16 +39,16 @@ const ChartContainer = styled.div`
   }
 `;
 
-const ChatBar = () => {
+const ChatBar = ({ info }: { info: Idata }) => {
   const data = {
     labels: ["", ""],
     datasets: [
       {
         label: "Messages Sent",
-        data: [1, 19],
+        data: [info.investors, info.entrepreneurs],
         backgroundColor: ["#C7D9FF", "#E2CAA9"],
         barThickness: 70,
-        borderRadius: 10, // Apply border radius to the bars
+        borderRadius: 10,
       },
     ],
   };
@@ -63,7 +63,7 @@ const ChatBar = () => {
         enabled: true,
       },
       datalabels: {
-        display: false, // Set display to false to remove labels from the columns
+        display: false,
       },
     },
     scales: {
@@ -73,8 +73,11 @@ const ChatBar = () => {
         },
         ticks: {
           color: "#FFFFFF",
-          callback: function (value, index) {
-            return data.datasets[0].data[index];
+          callback: function (value: string | number, index: number) {
+            if (typeof value === "number") {
+              return data.datasets[0].data[index];
+            }
+            return value;
           },
         },
       },
@@ -87,7 +90,6 @@ const ChatBar = () => {
           color: "#FFFFFF",
           beginAtZero: true,
         },
-
         border: {
           display: false,
         },
@@ -112,44 +114,85 @@ const ChatBar = () => {
     </ChartContainer>
   );
 };
+
 const CircleE = styled.div`
-  width: 28px;
-  height: 28px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background-color: #c7d9ff;
+  @media (min-width: 768px) {
+    width: 22px;
+    height: 22px;
+  }
+  @media (min-width: 1440px) {
+    width: 28px;
+    height: 28px;
+  }
 `;
+
 const Circlei = styled.div`
-  width: 28px;
-  height: 28px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background-color: #e2caa9;
+  @media (min-width: 768px) {
+    width: 22px;
+    height: 22px;
+  }
+  @media (min-width: 1440px) {
+    width: 28px;
+    height: 28px;
+  }
 `;
+
 const Parent = styled.div`
   display: flex;
-  gap: 5rem;
+  gap: 2rem;
   align-items: center;
-  margin-left: 20%;
   margin-bottom: 2rem;
+  margin-left: 20%;
+  @media (min-width: 768px) {
+    gap: 13rem;
+  }
+  @media (min-width: 1440px) {
+    gap: 25rem;
+  }
 `;
+
 const SigleCon = styled.div`
   display: flex;
   align-items: center;
   gap: 25px;
 `;
+
 const Texte = styled.span`
   color: #c7d9ff;
   font-family: Chivo;
-  font-size: 36px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  @media (min-width: 768px) {
+    font-size: 22px;
+  }
+  @media (min-width: 1440px) {
+    font-size: 36px;
+  }
 `;
+
 const Texti = styled.span`
   color: #e2caa9;
   font-family: Chivo;
-  font-size: 36px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  @media (min-width: 768px) {
+    font-size: 22px;
+  }
+  @media (min-width: 1440px) {
+    font-size: 36px;
+  }
 `;
+
 export default ChatBar;

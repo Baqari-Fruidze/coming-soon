@@ -1,26 +1,28 @@
 import styled from "styled-components";
-import logo from "/images/rfgt.png";
-import textLogo from "/images/trhy-01.png";
-
+import testLogo from "/images/Color logo with background.svg";
 export default function Header() {
   return (
     <Parent>
       <ContentCon>
-        <LogoImg src={logo} alt="" />
-        <TextLogoImg src={textLogo} alt="" />
+        <LogoImg src={testLogo} alt="" />
       </ContentCon>
     </Parent>
   );
 }
 
 const LogoImg = styled.img`
-  width: 10.3rem;
+  width: 31.9rem;
   height: 7.7rem;
+  @media (min-width: 768px) {
+    width: 42.3rem;
+    height: 9.7rem;
+  }
+  @media (min-width: 1440px) {
+    width: 64.7rem;
+    height: 13.1rem;
+  }
 `;
-const TextLogoImg = styled.img`
-  width: 19.2rem;
-  height: 5.5rem;
-`;
+
 const ContentCon = styled.div`
   display: flex;
   align-items: center;

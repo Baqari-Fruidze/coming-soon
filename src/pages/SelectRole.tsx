@@ -9,7 +9,14 @@ import investori from "../Investori.json";
 import mewarme from "../mewarme.json";
 import ChatBar from "../components/ChatBar";
 
+export interface Idata {
+  investors: number;
+  entrepreneurs: number;
+}
+
 export default function SelectRole() {
+  const [chat, setChat] = useState<boolean>(false);
+  const [hide, setHide] = useState<boolean>(false);
   const [invAdvice, setInvAdvice] = useState({
     title: "",
     content: "",
@@ -29,57 +36,72 @@ export default function SelectRole() {
     choice: "",
   });
   const [chosen, setChosen] = useState<boolean>(false);
-  const [info, setInfo] = useState({});
+  const [info, setInfo] = useState<Idata>({
+    investors: 1,
+    entrepreneurs: 1,
+  });
   const [show, setShow] = useState<boolean>(false);
   const navigate = useNavigate();
-  console.log(mewarme.common);
+
   useEffect(() => {
-    if (choice.choice) {
-      const foo = async () => {
-        try {
-          const res = await fetch(
-            "https://chic-communication-coming-soon.up.railway.app/api/choice/",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(choice),
-            }
-          );
-
-          if (!res.ok) {
-            setChosen(true);
+    const foo = async () => {
+      console.log(choice);
+      try {
+        const res = await fetch(
+          "https://chic-communication-coming-soon.up.railway.app/api/choice/",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(choice),
           }
-          if (res.ok) {
-            const data = await res.json();
-            setInfo(data);
-            setShow(true);
-          }
-        } catch (err) {
-          console.error("Error:", err);
+        );
+        console.log(res);
+        if (res.status === 302) {
+          setChosen(true);
+          const data = await res.json();
+          setInfo(data);
+          setHide(true);
+          setChat(true);
         }
-      };
-      foo();
-    }
-  }, [choice]);
 
+        if (res.status === 201) {
+          const data = await res.json();
+          setInfo(data);
+          setShow(true);
+        }
+      } catch (err) {
+        console.error("Error:", err);
+      }
+    };
+
+    foo();
+  }, [choice]);
+  console.log(choice);
   return (
     <Parent>
       <CountDown />
-      <RoleSelect>
-        <RoleText
-          onClick={() => setChoice({ ...choice, choice: "entrepreneur" })}
-        >
-          მეწარმე
-        </RoleText>
-        <VerticalLine />
-        <RoleText onClick={() => setChoice({ ...choice, choice: "investor" })}>
-          ინვესტორი
-        </RoleText>
-      </RoleSelect>
+
+      {hide ? null : (
+        <RoleSelect>
+          <RoleText
+            onClick={() => setChoice({ ...choice, choice: "entrepreneur" })}
+          >
+            მეწარმე
+          </RoleText>
+          <VerticalLine />
+          <RoleText
+            onClick={() => setChoice({ ...choice, choice: "investor" })}
+          >
+            ინვესტორი
+          </RoleText>
+        </RoleSelect>
+      )}
+
       {show ? <Success /> : null}
       {chosen ? <Repeat /> : null}
+      {show ? <ChatBar info={info} /> : chat ? <ChatBar info={info} /> : null}
       {show ? (
         <AdviceCon>
           <Header>
@@ -100,7 +122,7 @@ export default function SelectRole() {
           </Text>
         </AdviceCon>
       ) : null}
-      <ChatBar />
+
       <BottommCon onClick={() => navigate("/")}>
         <Img src={previous} alt="" />
         <Mini>უკან</Mini>
