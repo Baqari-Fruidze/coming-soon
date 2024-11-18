@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import investori from "../Investori.json";
 import mewarme from "../mewarme.json";
 import ChatBar from "../components/ChatBar";
+import { Helmet } from "react-helmet";
 
 export interface Idata {
   investors: number;
@@ -75,6 +76,10 @@ export default function SelectRole() {
   }, [choice]);
   return (
     <Parent>
+      <Helmet>
+        <title>Dealin</title>
+        <meta name="description" content="Welcome to My Website" />
+      </Helmet>
       <CountDown />
 
       {hide ? null : (
