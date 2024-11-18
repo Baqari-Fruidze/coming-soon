@@ -3,6 +3,7 @@ import arrowDown from "/images/arrow-down-s-line.svg";
 import { useState } from "react";
 import next from "/images/scroll-to-bottom-fill.svg";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 export default function Home() {
   const [first, setFirst] = useState<boolean>(false);
@@ -12,6 +13,10 @@ export default function Home() {
   const navigate = useNavigate();
   return (
     <Parent>
+      <Helmet>
+        <title>Dealin</title>
+        <meta name="description" content="Welcome to My Website" />
+      </Helmet>
       <ContenCon>
         <FirstCon>
           <QuestionCon status={first} onClick={() => setFirst((prev) => !prev)}>
