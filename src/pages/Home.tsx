@@ -141,7 +141,7 @@ const Img = styled.img`
   transform: rotate(-90deg);
 `;
 const Lii = styled.li`
-  margin-left: 2.5rem;
+  margin-left: 3.5rem;
   color: #c7d9ff;
   font-family: Glaho;
   font-size: 18px;
@@ -167,7 +167,7 @@ const UUl = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding-left: 0.6rem;
+  padding-left: 2.6rem;
   padding-right: 0.6rem;
   padding-bottom: 3rem;
 `;
