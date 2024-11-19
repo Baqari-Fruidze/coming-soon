@@ -8,7 +8,7 @@ export default function Repeat() {
     <Parent>
       <Icon src={icon} alt="" />
       <Span>
-        თქვენ უკვე აირჩიეთ თქვენი სტატუსი, მადლობას გიხდით{" "}
+        თქვენ უკვე აირჩიეთ სტატუსი, მადლობას გიხდით{" "}
         {isSmallDevice ? <br /> : null}
         თანამშრომლობისათვის
       </Span>

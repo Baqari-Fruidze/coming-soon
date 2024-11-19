@@ -111,9 +111,11 @@ export default function SelectRole() {
               : invAdvice.title}
           </Header>
           <Text>
+            "
             {choice.choice === "entrepreneur"
               ? mewAdvice.content
               : invAdvice.content}
+            "
           </Text>
           <VerticalLinee />
           <Text>

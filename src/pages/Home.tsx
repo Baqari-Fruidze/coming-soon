@@ -262,7 +262,7 @@ const Parent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18rem;
+  gap: 15rem;
   padding-left: 9px;
   padding-right: 9px;
   padding-bottom: 13rem;
