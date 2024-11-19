@@ -34,7 +34,7 @@ const Parent = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 14.3rem;
-  padding-bottom: 22.8rem;
+  padding-bottom: 14.8rem;
   @media (min-width: 768px) {
     padding-top: 16.3rem;
     padding-bottom: 22.8rem;
