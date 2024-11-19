@@ -73,6 +73,10 @@ const ChatBar = ({ info }: { info: Idata }) => {
         },
         ticks: {
           color: "#FFFFFF",
+          font: {
+            size: 22,
+            family: "Chivo",
+          },
           callback: function (value: string | number, index: number) {
             if (typeof value === "number") {
               return data.datasets[0].data[index];
@@ -89,6 +93,10 @@ const ChatBar = ({ info }: { info: Idata }) => {
         ticks: {
           color: "#FFFFFF",
           beginAtZero: true,
+          font: {
+            size: 22,
+            family: "Chivo",
+          },
         },
         border: {
           display: false,
