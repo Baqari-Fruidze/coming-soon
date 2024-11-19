@@ -44,7 +44,7 @@ const ChatBar = ({ info }: { info: Idata }) => {
     labels: ["", ""],
     datasets: [
       {
-        label: "Messages Sent",
+        label: "",
         data: [info.investors, info.entrepreneurs],
         backgroundColor: ["#C7D9FF", "#E2CAA9"],
         barThickness: 70,
