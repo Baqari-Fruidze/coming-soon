@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import testLogo from "/images/Color logo with background.svg";
+import { useNavigate } from "react-router-dom";
 export default function Header() {
+  const navigate = useNavigate();
   return (
     <Parent>
       <ContentCon>
-        <LogoImg src={testLogo} alt="" />
+        <LogoImg src={testLogo} alt="" onClick={() => navigate("/")} />
       </ContentCon>
     </Parent>
   );

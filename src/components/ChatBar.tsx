@@ -147,22 +147,25 @@ const Circlei = styled.div`
 
 const Parent = styled.div`
   display: flex;
-  gap: 2rem;
+  gap: 7rem;
   align-items: center;
   margin-bottom: 2rem;
-  margin-left: 20%;
+  margin-left: 16%;
   @media (min-width: 768px) {
-    gap: 13rem;
+    margin-left: 20%;
+    gap: 23rem;
   }
   @media (min-width: 1440px) {
-    gap: 25rem;
+    gap: 27rem;
   }
 `;
 
 const SigleCon = styled.div`
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 10px;
+  @media (min-width: 768px) {
+  }
 `;
 
 const Texte = styled.span`

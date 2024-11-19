@@ -17,7 +17,7 @@ export interface Idata {
 
 export default function SelectRole() {
   const [chat, setChat] = useState<boolean>(false);
-  const [hide, setHide] = useState<boolean>(false);
+  const [selected, setSelected] = useState<boolean>(false);
   const [invAdvice, setInvAdvice] = useState({
     title: "",
     content: "",
@@ -61,7 +61,7 @@ export default function SelectRole() {
         setChosen(true);
         const data = await res.json();
         setInfo(data);
-        setHide(true);
+        setSelected(true);
         setChat(true);
       }
 
@@ -69,20 +69,23 @@ export default function SelectRole() {
         const data = await res.json();
         setInfo(data);
         setShow(true);
+        setSelected(true);
       }
     };
 
     foo();
   }, [choice]);
+  console.log(selected);
   return (
     <Parent>
       <Helmet>
         <title>Dealin</title>
         <meta name="description" content="Welcome to My Website" />
+        <link rel="icon" href="/images/rfgt.png" sizes="32x32" />
       </Helmet>
       <CountDown />
 
-      {hide ? null : (
+      {selected ? null : (
         <RoleSelect>
           <RoleText
             onClick={() => setChoice({ ...choice, choice: "entrepreneur" })}

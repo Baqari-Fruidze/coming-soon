@@ -4,6 +4,7 @@ import { useState } from "react";
 import next from "/images/scroll-to-bottom-fill.svg";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import CountdownTimer from "../components/CountDown";
 
 export default function Home() {
   const [first, setFirst] = useState<boolean>(false);
@@ -16,7 +17,9 @@ export default function Home() {
       <Helmet>
         <title>Dealin</title>
         <meta name="description" content="Welcome to My Website" />
+        <link rel="icon" href="/images/rfgt.png" sizes="32x32" />
       </Helmet>
+      <CountdownTimer />
       <ContenCon>
         <FirstCon>
           <QuestionCon status={first} onClick={() => setFirst((prev) => !prev)}>
