@@ -75,7 +75,6 @@ export default function SelectRole() {
 
     foo();
   }, [choice]);
-  console.log(selected);
   return (
     <Parent>
       <Helmet>
