@@ -17,7 +17,8 @@ export default function Repeat() {
 }
 const Parent = styled.div`
   display: flex;
-
+  padding-left: 2.4rem;
+  padding-right: 2.4rem;
   align-items: center;
   gap: 13px;
 `;
@@ -28,7 +29,7 @@ const Icon = styled.img`
 const Span = styled.span`
   color: #e56d6d;
   font-family: "BPG Glaho";
-  font-size: 22px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
