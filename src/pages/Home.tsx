@@ -18,6 +18,8 @@ export default function Home() {
         <title>Dealin</title>
         <meta name="description" content="Welcome to My Website" />
         <link rel="icon" href="/images/rfgt.png" sizes="32x32" />
+        <meta property="og:title" content="Dealin" />
+        <meta property="og:image" content="/images/chatlogo.png" />
       </Helmet>
       <CountdownTimer />
       <ContenCon>
