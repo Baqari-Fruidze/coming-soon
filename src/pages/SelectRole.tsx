@@ -184,6 +184,9 @@ const BottommCon = styled.div`
   display: flex;
   gap: 23px;
   align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 const Mini = styled.span`
   color: #e2caa9;

@@ -129,6 +129,9 @@ const BottonCon = styled.div`
   display: flex;
   gap: 18px;
   align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 const Mini = styled.span`
   color: #e2caa9;
