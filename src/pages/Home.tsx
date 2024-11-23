@@ -18,12 +18,6 @@ export default function Home() {
         <title>Dealin</title>
         <meta name="description" content="Welcome to My Website" />
         <link rel="icon" href="/images/rfgt.png" sizes="32x32" />
-        {/* <meta property="og:title" content="Dealin" />
-        <meta
-          property="og:image"
-          content="https://www.dealin.com.ge/images/chatlogo.png"
-        />
-        <meta property="og:url" content="https://www.dealin.com.ge/" /> */}
       </Helmet>
       <CountdownTimer />
       <ContenCon>
@@ -210,6 +204,7 @@ const SecondCon = styled.div`
   border-bottom: 2px solid #fff;
 `;
 const Answer = styled.p`
+  padding-left: 2.6rem;
   color: #c7d9ff;
   font-family: Glaho;
   font-size: 18px;
